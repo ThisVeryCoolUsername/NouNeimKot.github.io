@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ноунейм Кот | Самый душевный Telegram-канал</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0B0C10;
+            color: #EDEDED;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1F1F2E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F97316;
+            border-radius: 10px;
+        }
+
+        /* анимации */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero & general sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, rgba(15, 20, 30, 0.9), #0B0C10);
+            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .hero .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.2);
+            backdrop-filter: blur(6px);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #F97316;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #FFFFFF 30%, #F97316 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #B0B3C0;
+            max-width: 550px;
+            margin-bottom: 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.03);
+            padding: 6px 16px;
+            border-radius: 100px;
+            backdrop-filter: blur(4px);
+        }
+
+        .stat-item i {
+            color: #F97316;
+            font-size: 1.2rem;
+        }
+
+        .btn-subscribe {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #F97316;
+            color: #0B0C10;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 14px 36px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-subscribe i {
+            font-size: 1.3rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-subscribe:hover {
+            background: #ff8833;
+            transform: scale(1.03);
+            box-shadow: 0 12px 28px rgba(249, 115, 22, 0.5);
+        }
+
+        .btn-subscribe:hover i {
+            transform: translateX(5px);
+        }
+
+        .hero-image {
+            flex: 0.8;
+            text-align: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .cat-icon {
+            font-size: 13rem;
+            filter: drop-shadow(0 20px 30px rgba(249,115,22,0.3));
+            color: #F97316;
+            opacity: 0.9;
+        }
+
+        /* секция крутости */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #B0B3C0;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .cool-card {
+            background: rgba(30, 33, 48, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(249,115,22,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .cool-card:hover {
+            transform: translateY(-8px);
+            border-color: #F97316;
+            background: rgba(40, 44, 65, 0.8);
+        }
+
+        .cool-card i {
+            font-size: 3rem;
+            color: #F97316;
+            margin-bottom: 20px;
+        }
+
+        .cool-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .cool-card p {
+            color: #B6B9CE;
+        }
+
+        /* спонсоры */
+        .sponsors {
+            background: linear-gradient(120deg, #0f111a, #13161f);
+            border-radius: 48px;
+            margin: 40px 0;
+            padding: 48px 32px;
+            text-align: center;
+        }
+
+        .sponsors-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin-top: 30px;
+        }
+
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.03);
+            padding: 12px 28px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .sponsor-item i {
+            font-size: 2rem;
+        }
+
+        .sponsor-item span {
+            font-size: 1.2rem;
+            letter-spacing: -0.3px;
+        }
+
+        .mts {
+            color: #E30613;
+        }
+        .standoff {
+            color: #FFC107;
+        }
+
+        .sponsor-tag {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        /* кнопка повторная */
+        .cta-block {
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1d2d 0%, #0B0C10 100%);
+            border-radius: 48px;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .cta-block h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #8A8D9F;
+            font-size: 0.85rem;
+        }
+
+        /* адаптивность */
+        @media (max-width: 900px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .btn-subscribe {
+                margin: 0 auto;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .cat-icon {
+                font-size: 8rem;
+            }
+        }
+
+        /* бонус: волнистый фон */
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .hero {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fas fa-crown" style="margin-right: 6px;"></i> №1 в мемах и вайбе
+                </div>
+                <h1>НОУНЕЙМ КОТ <br> Врывается в Telegram</h1>
+                <p>Ты устал от скучной ленты? Твой пушистый проводник в мир угара, розыгрышей и чилловых стримов. <strong>Ноунейм Кот</strong> — это не просто канал, это закрытый клуб для тех, кто ценит качественный юмор и настоящую поддержку!</p>
+                <div class="hero-stats">
+                    <div class="stat-item"><i class="fas fa-bolt"></i> 15 000+ подписчиков</div>
+                    <div class="stat-item"><i class="fas fa-gamepad"></i> Мемы про игры</div>
+                    <div class="stat-item"><i class="fas fa-gift"></i> Еженедельные розыгрыши</div>
+                </div>
+                <a href="https://t.me/Nou_Neim_Kot" target="_blank" class="btn-subscribe" id="subscribeBtn">
+                    <i class="fab fa-telegram-plane"></i> Подписаться сейчас
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="cat-icon">
+                    <i class="fas fa-cat"></i>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style="width:100%; height:80px;">
+                <path fill="#F97316" fill-opacity="0.15" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Секция почему крутой -->
+        <section>
+            <h2 class="section-title">Почему <span style="color:#F97316;">Ноунейм Кот</span> — твой новый must-have?</h2>
+            <p class="section-sub">Забудь про скучные паблики. Здесь каждый пост — улыбка до ушей, а атмосфера как в уютной кошачьей лаунж-зоне.</p>
+            <div class="cards-grid">
+                <div class="cool-card">
+                    <i class="fas fa-skull"></i>
+                    <h3>Ультра-мемы</h3>
+                    <p>Оригинальный контент, которого нет больше нигде. Отсылки к играм, IT и жизни — абсолютный релакс.</p>
+                </div>
+                <div class="cool-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Гига-розыгрыши</h3>
+                    <p>Каждую неделю разыгрываем подписки, стимеры и внутриигровые плюшки от спонсоров. Просто будь в канале.</p>
+                </div>
+                <div class="cool-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Комьюнити без токсиков</h3>
+                    <p>Чат, где всегда поддержат, подбросят мем и помогут пройти сложный уровень. Котики рулят!</p>
+                </div>
+                <div class="cool-card">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h3>Голосовые вечеринки</h3>
+                    <p>Каждую пятницу — стримы и игры с подписчиками. Standoff 2, шутеры и просто треп по душам.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок спонсоров (МТС и разработчики Standoff 2) -->
+        <div class="sponsors">
+            <i class="fas fa-handshake" style="font-size: 2rem; color:#F97316; margin-bottom: 12px; display: inline-block;"></i>
+            <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Генеральные партнёры</h3>
+            <p style="max-width: 600px; margin: 0 auto 20px auto; color: #bcbed6;">Именно благодаря крутым ребятам контент становится ещё мощнее и интереснее!</p>
+            <div class="sponsors-flex">
+                <div class="sponsor-item">
+                    <i class="fas fa-signal mts"></i>
+                    <span class="mts"><strong>МТС</strong> | Цифровой океан</span>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-crosshairs standoff"></i>
+                    <span class="standoff"><strong>Standoff 2</strong> | Разработчики игры</span>
+                </div>
+            </div>
+            <div class="sponsor-tag">
+                <i class="fas fa-heart" style="color:#F97316;"></i> Спасибо МТС и команде Standoff 2 за поддержку уникального контента. Вместе мы создаём лучшее комьюнити!
+            </div>
+        </div>
+
+        <!-- Блок с преимуществами + спонсорские ништяки -->
+        <section style="padding-top: 20px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; min-width: 260px;">
+                    <i class="fas fa-gem" style="font-size: 2.5rem; color: #F97316; margin-bottom: 16px; display: inline-block;"></i>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 16px;">Эксклюзив от Standoff 2 & МТС</h3>
+                    <p>Подписчики «Ноунейм Кот» получают доступ к закрытым розыгрышам скинов и внутриигровых подарков от разработчиков Standoff 2. А МТС дарит промокоды на гигабайты и крутые бонусы в мобильной связи. <strong>Просто подпишись и не упусти свой шанс.</strong></p>
+                </div>
+                <div style="flex: 0.7; background: #1a1d2b; border-radius: 36px; padding: 24px; border-left: 3px solid #F97316;">
+                    <i class="fas fa-chart-line" style="color: #F97316; margin-right: 10px;"></i> Факт:
+                    <div style="font-weight: 600; margin-top: 12px;">За последний месяц активность в канале выросла на 240% 🔥</div>
+                    <div style="font-size: 0.9rem; margin-top: 8px;">И всё благодаря ламповому вайбу и поддержке топ-спонсоров.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Еще один крутой блок с цифрами -->
+        <div style="background: rgba(249,115,22,0.08); border-radius: 40px; padding: 40px 20px; margin: 20px 0 40px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center; gap: 20px;">
+                <div>
+                    <i class="fas fa-smile-wink" style="font-size: 2rem; color: #F97316;"></i>
+                    <div style="font-size: 2.2rem; font-weight: 800;">24/7</div>
+                    <div>Круглосуточный позитив</div>
+                </div>
+                <div>
+                    <i class="fas fa-gamepad" style="font-size: 2rem; color: #F97316;"></i>
+                    <div style="font-size: 2.2rem; font-weight: 800;">Standoff 2</div>
+                    <div>Турниры с призами</div>
+                </div>
+                <div>
+                    <i class="fas fa-cat" style="font-size: 2rem; color: #F97316;"></i>
+                    <div style="font-size: 2.2rem; font-weight: 800;">Ноунейм</div>
+                    <div>Но самый душевный</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Отзывы участников (для убедительности) -->
+        <div style="margin: 20px 0 30px;">
+            <h2 class="section-title" style="font-size: 1.9rem;">Что говорят <span style="color:#F97316;">подписчики</span>?</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 40px;">
+                <div style="flex:1; background: #11121b; border-radius: 28px; padding: 24px;">
+                    <i class="fas fa-quote-left" style="color:#F97316; opacity:0.6;"></i>
+                    <p style="margin: 16px 0;">«Ноунейм Кот — лучшее, что случалось со мной в телеграме. Сначала думал «ну ещё один канал», а теперь каждый день жду новые мемы и розыгрыши от МТС и Standoff 2. Ребята реально заботятся о комьюнити!»</p>
+                    <b>— Дмитрий, 2 месяца в канале</b>
+                </div>
+                <div style="flex:1; background: #11121b; border-radius: 28px; padding: 24px;">
+                    <i class="fas fa-quote-left" style="color:#F97316; opacity:0.6;"></i>
+                    <p style="margin: 16px 0;">«Всю жизнь играл в Standoff 2 и пользуюсь МТС, а тут бац — мой любимый кот-канал спонсируют мегабренды. Очень рад, что есть такие проекты. Там и киберспорт, и угар, и подарки. В общем, подписывайтесь, не пожалеете!»</p>
+                    <b>— Алина, активный читатель</b>
+                </div>
+                <div style="flex:1; background: #11121b; border-radius: 28px; padding: 24px;">
+                    <i class="fas fa-quote-left" style="color:#F97316; opacity:0.6;"></i>
+                    <p style="margin: 16px 0;">«Админ — огонь, посты всегда в тему. Стримы по пятницам с розыгрышами внутриигровых ценностей от Standoff 2 — это просто бомба. Очень круто, что спонсоры поддерживают таких ноунеймов, но на деле мы уже легенды!»</p>
+                    <b>— Андрей, подписчик с первого дня</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- Заключительный CTA с кнопкой -->
+        <div class="cta-block">
+            <h2>Стань частью стаи 🐾</h2>
+            <p style="max-width: 550px; margin: 12px auto 32px;">Присоединяйся к самому душевному и мемному каналу. Розыгрыши, эксклюзив, поддержка МТС и разработчиков Standoff 2 — только здесь.</p>
+            <a href="https://t.me/Nou_Neim_Kot" target="_blank" class="btn-subscribe" style="background: #F97316; font-size: 1.3rem;">
+                <i class="fab fa-telegram-plane"></i> Перейти в Telegram
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <div style="margin-top: 32px;">
+                <i class="fas fa-shield-alt"></i> Без спама, только качественный контент
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap;">
+                <span><i class="fab fa-telegram"></i> @Nou_Neim_Kot</span>
+                <span><i class="fas fa-cat"></i> Ноунейм Кот — твой персональный релакс</span>
+                <span><i class="fas fa-trophy"></i> При поддержке МТС и Standoff 2</span>
+            </div>
+            <p>© 2026 Ноунейм Кот. Все права на мемы защищены 🐈. Будь в теме — подписывайся!</p>
+            <p style="margin-top: 10px; font-size: 0.7rem;">*Standoff 2 и МТС — официальные партнёры проекта, гарантируем крутые бонусы для активных подписчиков</p>
+        </div>
+    </footer>
+
+    <!-- простой JS для дополнительного эффекта на кнопку -->
+    <script>
+        (function() {
+            const btns = document.querySelectorAll('.btn-subscribe');
+            btns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // просто добавим небольшую анимацию клика
+                    btn.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // эффект появления при скролле (простая анимация для карточек)
+            const fadeElements = document.querySelectorAll('.cool-card, .sponsor-item, .hero-content, .hero-image, .cta-block, .sponsors');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
+
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            // также hero content сразу показываем (но он уже по анимации изначальной, но пусть)
+            document.querySelectorAll('.hero-content, .hero-image').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        })();
+    </script>
+</body>
+</html>
